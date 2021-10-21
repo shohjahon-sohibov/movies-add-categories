@@ -98,7 +98,7 @@ let sortSearchResults = (results, sortType) => {
 let findMovies = (title, minRating, genre) => {
   return normalizedMovies.filter((movie) => {
     let searchQuery = new RegExp(genre, 'gi');
-    let doesMatchCategories = (genre === 'all' || movie.categories.join(' ').match(searchQuery)) ? true : false;
+    let doesMatchCategories = genre === 'all' || movie.categories.join(' ').match(searchQuery) ? true : false;
 console.log(doesMatchCategories, movie.title.match(title), movie.imdbRating >= minRating);
     return (
       movie.title.match(title) &&
