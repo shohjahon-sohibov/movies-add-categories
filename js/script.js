@@ -48,7 +48,7 @@ let render = (searchResults, searchRegex) => {
     if (searchRegex === '(?:)') {
       $_('.movie__title', elMovie).textContent = movie.title
     } else {
-      $_('.movie__title', elMovie).innerHTML = movie.title.replace(searchRegex, `<mark class = "px = 0">${searchRegex}</mark>`);
+      $_('.movie__title', elMovie).innerHTML = movie.title.replace(/searchRegex/, `<mark class = "px = 0">${searchRegex}</mark>`);
     }
       
       $_('.movie__year', elMovie).textContent = movie.year;
@@ -98,7 +98,7 @@ let sortSearchResults = (results, sortType) => {
 let findMovies = (title, minRating, genre) => {
   return normalizedMovies.filter((movie) => {
     let searchQuery = new RegExp(genre, 'gi');
-    let doesMatchCategories = (genre === 'all' || movie.categories.join(' ').match(searchQuery)) ? true : false;
+    let doesMatchCategories = genre === 'all' || movie.categories.join(' ').match(searchQuery) ? true : false;
 console.log(doesMatchCategories, movie.title.match(title), movie.imdbRating >= minRating);
     return (
       movie.title.match(title) &&
